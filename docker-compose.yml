@@ -1,0 +1,44 @@
+version: '3.3'
+services:
+  web:
+    image: php:7.4-apache
+    container_name: php74
+    depends_on:
+      - db
+    volumes:
+      - ./php:/var/www/html/
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 5003:8080
+
+  nginx:
+    image: linuxserver/letsencrypt
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx-conf/nginx.conf:/config/nginx/site-confs/default
+      - ./nginx-conf/ssl.conf:/config/nginx/ssl.conf
+    container_name: nginx
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - URL=boxadi.com
+      - SUBDOMAINS=www,
+      - VALIDATION=http
+      - STAGING=false #optional
+
+
