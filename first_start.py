@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-p = os.path.abspath('compose-auto.py')
+p = os.path.abspath('compose-automation.py')
 print(p)
 path = Path(p).parent.parent
 print(path)
