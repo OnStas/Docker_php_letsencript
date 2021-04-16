@@ -10,5 +10,5 @@ try:
 except:
    print('file not found')
 print('..copy done...')
-os.system('echo \"*/5 * * * * python ' + str(path) + '/compose-automation.py\" >> /etc/crontab')
-# print('echo \"*/5 * * * * python ' + str(path) + '/compose-automation.py\" >> /etc/crontab')
+os.system('echo \"*/5 * * * * python ' + str(path) + '/compose-autostart.py\" >> /etc/crontab')
+# print('echo \"*/5 * * * * python ' + str(path) + '/compose-autostart.py\" >> /etc/crontab')
