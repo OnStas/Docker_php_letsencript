@@ -1,12 +1,12 @@
 import os
 from pathlib import Path
 
-p = os.path.abspath('compose-automation.py')
+p = os.path.abspath('compose-autostart.py')
 print(p)
 path = Path(p).parent.parent
 print(path)
 try:
-   os.system('mv compose-automation.py ' + str(path))
+   os.system('mv compose-autostart.py ' + str(path))
 except:
    print('file not found')
 print('..copy done...')
